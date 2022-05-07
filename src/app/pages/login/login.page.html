@@ -1,0 +1,46 @@
+<ion-content  [fullscreen]="true">
+
+  <div id="container" >
+    <ion-card>
+      <ion-card-header  >
+        <ion-card-title class="ion-padding">ACCEDER</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form (ngSubmit)="login(fLogin)" #fLogin="ngForm">
+
+          <ion-item class="ion-padding" mode="md">
+            <ion-icon slot="start" name="person" size="large" color="primary"></ion-icon>
+            <ion-label position="floating">Usuario</ion-label>
+            <ion-input 
+              name="username"
+              type="username"
+              [(ngModel)] = "login_user.username"
+              color="primary"
+              required>
+            </ion-input>
+          </ion-item>
+    
+          <ion-item class="ion-padding" mode="md">
+            <ion-icon slot="start" name="lock-closed" size="large" color="primary"></ion-icon>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input 
+              name="password"
+              type="password"
+              [(ngModel)] = "login_user.password"
+              color="primary"
+              required>
+            </ion-input>
+          </ion-item>
+    
+          <ion-button
+          type="submit"
+          shape="round">
+            ENTRAR
+          </ion-button>
+          
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div> 
+
+</ion-content>
