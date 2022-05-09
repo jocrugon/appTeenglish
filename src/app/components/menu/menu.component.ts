@@ -14,9 +14,8 @@ import { LoginService } from 'src/app/services/login.service';
 export class MenuComponent implements OnInit {
 
   listCategories;
-  completeName;
+  completeName = "error";
   avatar = 'dfImage.jpg';
-  token:string = "aún no se carga";
 
   constructor(
     private loginService:LoginService,
@@ -29,8 +28,10 @@ export class MenuComponent implements OnInit {
   { this.storage.create();}
 
   async ngOnInit() {
-    this.data.getToken();
-    this.data.getToken$().subscribe(data=> this.token = data);
+    this.data.getCompleteName();
+    this.data.getCompleteName$().subscribe(data => this.completeName = data);
+    this.data.getAvatar();
+    this.data.getAvatar$().subscribe(data => this.avatar = data);
     (await this.exercise.getCategories())
     .subscribe( data =>{this.listCategories = data});
      

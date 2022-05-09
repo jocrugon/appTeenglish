@@ -10,8 +10,8 @@ export class DataService {
   private token$: Subject<string>;
   private completeName$: Subject<string>;
   private avatar$: Subject<string>;
-  private current_score$: Subject<string>;
-  private idStudent$: Subject<string>;
+  private current_score$: Subject<number>;
+  private idStudent$: Subject<number>;
 
   constructor(
     private storage: Storage,
@@ -56,10 +56,10 @@ export class DataService {
   getAvatar$():Observable<string>{
     return this.avatar$.asObservable();
   }
-  getCurrent_score$():Observable<string>{
+  getCurrent_score$():Observable<number>{
     return this.current_score$.asObservable();
   }
-  getIdStudent$():Observable<string>{
+  getIdStudent$():Observable<number>{
     return this.idStudent$.asObservable();
   }
 

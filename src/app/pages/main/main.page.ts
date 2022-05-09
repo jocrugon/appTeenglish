@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage-angular';
-import { LoginService } from 'src/app/services/login.service';
-import { Observable, Subject } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
+
 
 @Component({
   selector: 'app-main',
@@ -13,41 +12,25 @@ import { Observable, Subject } from 'rxjs';
 })
 
 export class MainPage implements OnInit {
-  current_score = 0;
-  token:string;
 
+  current_score = 0;
 
   constructor(
     private storage:Storage,
     private menu: MenuController,
-    private loginService:LoginService,
-    private router:Router,
-    private navCtrl:NavController,
-
+    private data:DataService,
 
   ) { 
     this.storage.create();
 
   }
 
-  async ngOnInit() {
-
-    this.getToken2();
+  ngOnInit() {
+    this.data.getCurrent_score();
+    this.data.getCurrent_score$().subscribe(data=> this.current_score = data);
 
     this.menu.enable(true, 'first');
-/*     setTimeout(() => {
-      this.router.navigateByUrl('refresh', {skipLocationChange: true}).then(()=> this.router.navigate(['main']));
-    }, 2000); */
 
-    /* setInterval("location.reload()",1000); */
-
-
-  }
-
-
-  async getToken2(){
-    const token = await this.storage.get('token');
-    this.token = token;
   }
 
 
