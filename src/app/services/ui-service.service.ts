@@ -10,7 +10,7 @@ export class UiServiceService {
 
   async InformativeAlert(message:string) {
     const alert = await this.alertController.create({
-      header: 'Mensaje de error',
+      header: 'Mensaje',
       message,
       mode:'ios',
       buttons: ['OK']

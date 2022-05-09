@@ -3,11 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 
 import { NgForm } from '@angular/forms';
-import { LoadingController, NavController } from '@ionic/angular';
+import { LoadingController, MenuController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { UiServiceService } from 'src/app/services/ui-service.service';
-
-
 
 @Component({
   selector: 'app-login',
@@ -26,9 +24,11 @@ export class LoginPage implements OnInit {
     public loadingController: LoadingController,
     private uiService:UiServiceService,
     private storage: Storage,
+
   ) {this.storage.create(); }
 
   ngOnInit() {
+  
   }
 
   async login(fLogin: NgForm){
@@ -43,8 +43,7 @@ export class LoginPage implements OnInit {
       this.presentLoading();
       setTimeout(() => {
         this.navCtrl.navigateRoot('main',{animated:true});
-      }, 3000);
-      
+      }, 4000);
     }else{
     }
   }

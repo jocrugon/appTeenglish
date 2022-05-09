@@ -1,9 +1,21 @@
-<ion-header>
+<app-menu></app-menu>
+
+<ion-header id="main">
   <ion-toolbar>
-    <ion-title>main</ion-title>
+    <ion-buttons slot="start" >
+      <ion-menu-button menu="first" color="primary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="primary" class="ion-text-capitalize">teenglish studio</ion-title> 
+    
+    <div slot="secondary" class="ion-padding center-horizontal">
+      <ion-icon id="trophy" name="trophy" size="large"> ss</ion-icon>
+      <ion-label id="score" color="primary">{{current_score}}</ion-label>
+    </div>
+
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
   {{token}}
 </ion-content>

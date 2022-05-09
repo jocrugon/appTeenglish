@@ -1,0 +1,52 @@
+<ion-menu side="start" menuId="first" contentId="main" disabled="true">
+  <ion-header>
+
+    <ion-toolbar color="primary"> 
+      
+      <ion-avatar slot="start" class="ion-margin-start ion-margin-top ion-margin-bottom" >
+        <img  src="../assets/avatars/{{avatar}}" />
+      </ion-avatar>
+      <ion-title size="small" class="ion-text-capitalize">
+        {{completeName}}
+      </ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <!-- <ion-item >Categorías</ion-item> -->
+    <ion-text  color="primary">
+      <h3 class="ion-padding-start" >Categorías {{token}}</h3>
+    </ion-text>
+    <ion-menu-toggle>
+      <ion-list>
+
+        <ion-item 
+            id="categories" 
+            *ngFor="let category of listCategories"
+            detail
+          >
+            <ion-icon size="large" [name]="category.icon_name" slot="start" color="primary"></ion-icon>
+            <ion-label>{{category.category}}</ion-label>
+          </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-label>Aprendizaje</ion-label>
+        <ion-icon size="large" slot="end" name="enter" color="primary"></ion-icon>
+      </ion-item>
+      
+      <ion-item>Acerca de</ion-item>
+
+    </ion-menu-toggle>
+    
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar (click)="LogOut()">
+      <ion-icon color="danger" slot="start" name="log-out" class="ion-margin-start" size="large"></ion-icon>
+      <ion-title color="danger">Cerrar Sesión</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-menu>
