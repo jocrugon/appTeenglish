@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage-angular';
 import { DataService } from 'src/app/services/data.service';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class MainPage implements OnInit {
     private storage:Storage,
     private menu: MenuController,
     private data:DataService,
-
+    private login:LoginService,
   ) { 
     this.storage.create();
 
@@ -30,7 +31,7 @@ export class MainPage implements OnInit {
     this.data.getCurrent_score$().subscribe(data=> this.current_score = data);
 
     this.menu.enable(true, 'first');
-
+    this.login.validateToken();
   }
 
 
