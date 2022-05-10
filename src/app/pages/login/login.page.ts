@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
     username: '',
     password: ''
   };
-
+  buttonPressed = false;
   constructor(
     private loginService:LoginService, 
     private navCtrl:NavController,
@@ -32,19 +32,25 @@ export class LoginPage implements OnInit {
   }
 
   async login(fLogin: NgForm){
+    this.buttonPressed=true;
+    
     if (fLogin.invalid){
       this.uiService.InformativeAlert('Ingrese Usuario y/o Contraseña');
+      this.buttonPressed=false;
       return;
     }
 
     const is_valid = await this.loginService.login(this.login_user.username, this.login_user.password);
     
     if(is_valid){
+      this.buttonPressed=true;
       this.presentLoading();
       setTimeout(() => {
         this.navCtrl.navigateRoot('main',{animated:true});
       }, 4000);
     }else{
+      this.buttonPressed=false;
+
     }
   }
 

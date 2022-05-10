@@ -16,10 +16,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
-  {
-    path: 'refresh',
-    loadChildren: () => import('./pages/refresh/refresh.module').then( m => m.RefreshPageModule)
-  },
+
 
   
 ];
