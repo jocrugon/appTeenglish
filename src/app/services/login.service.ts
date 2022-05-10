@@ -22,12 +22,13 @@ export class LoginService {
   ) { this.storage.create(); }
 
   login( username:string, password:string){
-    const data = {username,password};
-    return new Promise(resolve=>{
-      this.http.post(`${URL}`, data)
+    const dataLogin = {username,password};
+    return new Promise<boolean>(resolve=>{
+      this.http.post(`${URL}`, dataLogin)
       .subscribe(
         (data=>{
           this.saveDataAccount(
+            dataLogin['username'],
             data['token'],
             data['user']['id'],
             data['user']['name'],
@@ -46,8 +47,9 @@ export class LoginService {
 
   }
 
-  async saveDataAccount(token:string, idAccount:number, name:string, last_name_p:string, last_name_m:string){
+  async saveDataAccount(username:string, token:string, idAccount:number, name:string, last_name_p:string, last_name_m:string){
     const completeName = (name+' '+last_name_p+' '+last_name_m);
+    await this.storage.set('username',username);
     await this.storage.set('completeName', completeName);
     await this.storage.set('token', token);
     this.getStudent(idAccount,token);
@@ -94,6 +96,27 @@ export class LoginService {
       }),
       (error => {console.log(error)})
     )
+  }
+
+  async validateToken():Promise<boolean>{
+    const token = await this.storage.get('token');
+    const username = await this.storage.get('username');
+
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization',`token ${token}`);
+
+    return new Promise<boolean>( resolve =>{
+      this.http.get(`${URL}/refresh-token/?username=${username}`,{headers})
+      .subscribe(
+        (data => {resolve(true);}),
+        (error => {
+          this.uiService.InformativeAlert('Acceso no permitido');
+          resolve(false);
+          this.navCtrl.navigateRoot('/login',{animated:true});
+        })
+        );
+    });
+  
   }
 
 }
