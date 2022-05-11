@@ -6,7 +6,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'main',
     pathMatch: 'full'
   },
   {
@@ -17,6 +17,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'type1/:id/:id_detail',
+    loadChildren: () => import('./pages/exercises/type1/type1.module').then( m => m.Type1PageModule),
+    canLoad: [UsuarioGuard],
   },
 
 

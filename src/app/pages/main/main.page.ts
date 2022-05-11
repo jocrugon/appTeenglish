@@ -23,7 +23,6 @@ export class MainPage implements OnInit {
     private storage:Storage,
     private menu: MenuController,
     private data:DataService,
-    private login:LoginService,
   ) { 
     this.storage.create();
 
@@ -36,7 +35,6 @@ export class MainPage implements OnInit {
     this.data.getCurrent_score$().subscribe(data=> this.current_score = data);
 
     this.menu.enable(true, 'first');
-    this.login.validateToken();
   }
 
   escuchaClick(idCategorySelected){

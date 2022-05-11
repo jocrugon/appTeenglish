@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { MenuComponent } from './menu/menu.component';
 import { ExercisesComponent } from './exercises/exercises.component';
+import { SkeletonTextComponent } from './skeleton-text/skeleton-text.component';
 
 
 
@@ -10,6 +11,7 @@ import { ExercisesComponent } from './exercises/exercises.component';
   declarations: [
     MenuComponent,
     ExercisesComponent,
+    SkeletonTextComponent,
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,9 @@ import { ExercisesComponent } from './exercises/exercises.component';
   ],
   exports:[
     MenuComponent,
-    ExercisesComponent
+    ExercisesComponent,
+    SkeletonTextComponent,
+
   ]
 })
 export class ComponentsModule { }

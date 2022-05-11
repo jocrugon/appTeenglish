@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { ExerciseService } from 'src/app/services/exercise.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class ExercisesComponent implements OnInit {
   listExercises;
   constructor(
     private exercise:ExerciseService,
+    private navCtrl:NavController,
 
   ) { }
 
@@ -26,6 +28,14 @@ export class ExercisesComponent implements OnInit {
 
   OpenExercise(idTypeExercise:number, idExercise:number, id_detail:number ){
     
+    switch(idTypeExercise){
+      case 1:
+        this.navCtrl.navigateRoot(`type1/${idExercise}/${id_detail}`);
+        break;
+      default:
+        break;
+      
+    }
     
   }
 }

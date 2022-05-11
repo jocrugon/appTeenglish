@@ -19,13 +19,12 @@ export class ExerciseService {
   
   async getCategories(){
     const token = await this.storage.get('token');
-
     let headers = new HttpHeaders();
     headers = headers.set('Authorization',`token ${token}`);
   
     return this.http.get(`${URL}/teenglish/category/`,{headers:headers});
-
   }
+
   async getExercisesByCategoryByStudent( idCategory:number){
     const token = await this.storage.get('token');
     const idStudent = await this.storage.get('idStudent');
@@ -33,5 +32,61 @@ export class ExerciseService {
     headers = headers.set('Authorization',`token ${token}`);
   
     return this.http.get(`${URL}/teenglish/exercise/category/${idStudent}/${idCategory}`,{headers:headers});
+  }
+
+  async getExerciseById(idExercise:number){
+    const token = await this.storage.get('token');
+
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization',`token ${token}`);
+  
+    return this.http.get(`${URL}/teenglish/exercise/${idExercise}`,{headers:headers});
+  }
+
+  async setSolvedInExerciseByCategoryAndStudent(id_detail:number){
+
+    const token = await this.storage.get('token');
+
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization',`token ${token}`);
+
+    const detail = {
+      'is_solved':true,
+    }
+
+    return this.http.put(`${URL}/teenglish/exercise/detail/update/${id_detail}`,detail,{headers:headers})
+    .subscribe(
+      (data => console.log(data)),
+      (error => console.log(error))
+    );
+
+  }
+
+  async setNewValueInCurrentScore(scoreExercise:number){
+    const token = await this.storage.get('token');
+    const currentScore = await this.storage.get('current_score');
+    const idStudent = await this.storage.get('idStudent');
+    
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization',`token ${token}`);
+
+    let sumScore = currentScore + scoreExercise;
+
+    this.saveCurrentScore(sumScore);
+
+    const student = {
+      'current_score':sumScore,
+    }
+
+    return this.http.put(`${URL}/teenglish/student/update/${idStudent}`,student,{headers:headers})
+    .subscribe(
+      (data => console.log(data)),
+      (error => console.log(error))
+    );
+  }
+
+  async saveCurrentScore(current_score:number){
+    await this.storage.set('current_score', current_score);
+
   }
 }

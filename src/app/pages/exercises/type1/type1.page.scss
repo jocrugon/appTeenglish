@@ -1,0 +1,69 @@
+ion-back-button{
+    --icon-font-size:40px;
+}  
+#type-exercise{
+    font-size: 20px;
+}
+#icon-type{
+    font-size: 30px;
+}
+#instruction{
+    font-size: 20px;
+}
+ion-chip{
+    height: 40px;
+    ion-icon{
+        font-size: 45px;
+    }
+    ion-label{
+        font-size: 20px;
+    }
+}
+
+ion-card{
+    border-radius: 1.2rem;
+    width: 45%;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    img{
+        padding: 5px;
+        border-radius: 1.2rem;
+
+    }
+}
+ion-card-header{
+    padding: 0px;
+    padding-bottom: 7px;
+}
+
+/* footer */
+
+ion-toolbar{
+    --ion-background-color: transparent;
+    --opacity:0;
+    svg{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+ion-footer{
+    height: 15px;
+}
+.tmr{
+    background-color: #5D9CCF;
+    margin-top: -100px;
+    margin-bottom: -2px;
+    margin-left: 20px;
+    color: white;
+    font-size: 25px;
+    p{
+        margin: 0px;
+    }
+}
+.tmr2{
+    margin-top: -200px;
+    margin-bottom: -2px;
+    height: 200px;
+    
+}
