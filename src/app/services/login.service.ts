@@ -109,7 +109,6 @@ export class LoginService {
       .subscribe(
         (data => {resolve(true);}),
         (error => {
-          this.uiService.InformativeAlert('Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuníquese con el administrador');
           resolve(false);
           this.navCtrl.navigateRoot('/login',{animated:true});
         })

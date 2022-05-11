@@ -21,7 +21,6 @@ const routes: Routes = [
   {
     path: 'type1/:id/:id_detail',
     loadChildren: () => import('./pages/exercises/type1/type1.module').then( m => m.Type1PageModule),
-    canLoad: [UsuarioGuard],
   },
 
 

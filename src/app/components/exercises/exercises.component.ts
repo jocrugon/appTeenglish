@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ExerciseService } from 'src/app/services/exercise.service';
+import { UiServiceService } from 'src/app/services/ui-service.service';
 
 @Component({
   selector: 'app-exercises',
@@ -15,12 +16,18 @@ export class ExercisesComponent implements OnInit {
   constructor(
     private exercise:ExerciseService,
     private navCtrl:NavController,
-
+    private uiService:UiServiceService,
   ) { }
 
   async ngOnChanges(){
     (await this.exercise.getExercisesByCategoryByStudent(this.idCategorySelected))
-      .subscribe(data =>{ this.listExercises = data});
+      .subscribe(
+        (data =>{ this.listExercises = data}),
+        (error=>{ 
+          this.uiService.InformativeAlert("Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuníquese con el administrador");
+          this.navCtrl.navigateRoot('login',{animated:true});
+        })
+        );
   }
   ngOnInit() {
     

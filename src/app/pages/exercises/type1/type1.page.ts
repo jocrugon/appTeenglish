@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { ExerciseService } from 'src/app/services/exercise.service';
+import { UiServiceService } from 'src/app/services/ui-service.service';
 import { environment } from 'src/environments/environment.prod';
 
 const URLimages = environment.URLimages;
@@ -26,7 +27,7 @@ export class Type1Page implements OnInit {
     private activatedRoute:ActivatedRoute,
     private exerciseService:ExerciseService,
     private navCtrl:NavController,
-
+    private uiService:UiServiceService,
   ) { }
 
   async ngOnInit() {
@@ -34,10 +35,16 @@ export class Type1Page implements OnInit {
     this.idDetailExercise = this.activatedRoute.snapshot.params.id_detail;
 
     (await this.exerciseService.getExerciseById(this.idExercise))
-    .subscribe( data =>{
+    .subscribe( 
+      (data =>{
       this.exercise = data['exercise'];
       this.listOptions = data['options'];
-    });
+      }),
+      (error =>{
+        this.uiService.InformativeAlert("Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuníquese con el administrador");
+        this.navCtrl.navigateRoot('login',{animated:true});
+      })
+      );
  
     
 
