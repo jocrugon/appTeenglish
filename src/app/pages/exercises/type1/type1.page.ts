@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
+
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { UiServiceService } from 'src/app/services/ui-service.service';
 import { environment } from 'src/environments/environment.prod';
@@ -28,6 +30,7 @@ export class Type1Page implements OnInit {
     private exerciseService:ExerciseService,
     private navCtrl:NavController,
     private uiService:UiServiceService,
+    private tts:TextToSpeech
   ) { }
 
   async ngOnInit() {
@@ -48,6 +51,15 @@ export class Type1Page implements OnInit {
  
     
 
+  }
+  playPhrase(phrase:string){
+    this.tts.speak({
+      text:phrase,
+      locale:'en-US',
+      rate:1
+    })
+    .then(()=>console.log('succes'))
+    .catch((reason:any)=>console.log(reason));
   }
 
   optionSelected(position:number, value:boolean){
