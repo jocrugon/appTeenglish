@@ -14,21 +14,25 @@
   </ion-header>
 
   <ion-content>
-    <!-- <ion-item >Categorías</ion-item> -->
+   
     <ion-text  color="primary">
       <h3 class="ion-padding-start" >Categorías</h3>
     </ion-text>
     <ion-menu-toggle>
-      <ion-list>
-
+      <ion-list class="menu-items" lines="none">
+        
         <ion-item 
-            id="categories" 
-            *ngFor="let category of listCategories"
-            detail
-          >
-            <ion-icon size="large" [name]="category.icon_name" slot="start" color="primary"></ion-icon>
-            <ion-label>{{category.category}}</ion-label>
-          </ion-item>
+          *ngFor="let category of listCategories" 
+          id="{{category.id}}"
+          (click)="categorySelected(category.id)"
+          [class.active]="category.id ===1"
+        >
+          <ion-icon size="large" color="primary" [name]="category.icon_name"></ion-icon>
+          <ion-text color="primary" class="ion-text-capitalize">
+            {{category.category}}
+          </ion-text>
+        </ion-item>
+
       </ion-list>
 
       <ion-item>
@@ -43,7 +47,7 @@
   </ion-content>
 
   <ion-footer>
-    <ion-toolbar (click)="LogOut()">
+    <ion-toolbar (click)="logOut()">
       <ion-icon color="danger" slot="start" name="log-out" class="ion-margin-start" size="large"></ion-icon>
       <ion-title color="danger">Cerrar Sesión</ion-title>
     </ion-toolbar>

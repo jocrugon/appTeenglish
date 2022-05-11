@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage-angular';
+import { MenuComponent } from 'src/app/components/menu/menu.component';
 import { DataService } from 'src/app/services/data.service';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -16,6 +17,8 @@ export class MainPage implements OnInit {
 
   current_score = 0;
 
+  idCategorySelected = 1;
+
   constructor(
     private storage:Storage,
     private menu: MenuController,
@@ -26,7 +29,9 @@ export class MainPage implements OnInit {
 
   }
 
+
   ngOnInit() {
+    
     this.data.getCurrent_score();
     this.data.getCurrent_score$().subscribe(data=> this.current_score = data);
 
@@ -34,5 +39,8 @@ export class MainPage implements OnInit {
     this.login.validateToken();
   }
 
+  escuchaClick(idCategorySelected){
+    this.idCategorySelected = idCategorySelected;
+  }
 
 }

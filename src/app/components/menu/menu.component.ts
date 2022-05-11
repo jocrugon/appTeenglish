@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage-angular';
@@ -13,9 +13,11 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class MenuComponent implements OnInit {
 
+  @Output() clickCategory = new EventEmitter();
   listCategories;
   completeName = "error";
   avatar = 'dfImage.jpg';
+  idCategorySelected = 1;
 
   constructor(
     private loginService:LoginService,
@@ -25,7 +27,7 @@ export class MenuComponent implements OnInit {
     private exercise:ExerciseService,
 
   ) 
-  { this.storage.create();}
+  { this.storage.create(); }
 
   async ngOnInit() {
     this.data.getCompleteName();
@@ -34,15 +36,38 @@ export class MenuComponent implements OnInit {
     this.data.getAvatar$().subscribe(data => this.avatar = data);
     (await this.exercise.getCategories())
     .subscribe( data =>{this.listCategories = data});
-     
+    
   }
 
-  LogOut(){
 
+  logOut(){
     this.loginService.logOut();
     this.storage.clear();
     this.menu.enable(false, 'first');
-    
-
   }
+
+
+  categorySelected(idCategorySelected:number){
+    if(this.idCategorySelected == idCategorySelected){
+      this.activateClassSelected(this.idCategorySelected)
+    }else{
+      this.deactivateClassSelected(this.idCategorySelected);
+      this.activateClassSelected(idCategorySelected);
+    }
+
+    this.idCategorySelected = idCategorySelected;
+
+    this.clickCategory.emit(idCategorySelected);
+    
+  }
+  
+  activateClassSelected(idCategorySelected:number){
+    var categorySelected = document.getElementById(`${idCategorySelected}`);
+    categorySelected.classList.add("active");
+  }
+  deactivateClassSelected(idCategorySelected:number){
+    var categorySelected = document.getElementById(`${idCategorySelected}`);
+    categorySelected.classList.remove("active");
+  }
+  
 }

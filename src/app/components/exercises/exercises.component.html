@@ -1,0 +1,21 @@
+<div *ngFor="let exercise of listExercises">
+  <div
+    [ngClass]="{'exercise-button-left':( listExercises.indexOf(exercise)+1)%2 != 0, 
+    'exercise-button-right': ( listExercises.indexOf(exercise)+1)%2 == 0}"
+  >
+    <ion-button [disabled]="exercise.is_solved"
+    (click)="OpenExercise(exercise.type_exercise, exercise.id_exercise, exercise.id_detail)"
+    >
+      <ion-icon 
+        slot="start" 
+        [name]="exercise.icon_name" 
+        color="primary" 
+        size="large"
+      ></ion-icon>
+      <ion-label color="primary">{{exercise.exercise}}</ion-label>
+      
+    </ion-button>
+    
+  </div>
+  
+</div>

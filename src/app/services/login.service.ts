@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment.prod';
 import { Storage } from '@ionic/storage-angular';
 import { NavController } from '@ionic/angular';
 
-
 const URL = environment.URL;
 
 @Injectable({
@@ -59,7 +58,7 @@ export class LoginService {
     if(status == 400){
       this.uiService.InformativeAlert('Usuario y/o Contraseña equivocada');
     }if(status == 409){
-      this.uiService.InformativeAlert('Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuniquese con el administrador');
+      this.uiService.InformativeAlert('Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuníquese con el administrador');
     }
   }
 
@@ -110,7 +109,7 @@ export class LoginService {
       .subscribe(
         (data => {resolve(true);}),
         (error => {
-          this.uiService.InformativeAlert('Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuniquese con el administrador');
+          this.uiService.InformativeAlert('Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuníquese con el administrador');
           resolve(false);
           this.navCtrl.navigateRoot('/login',{animated:true});
         })

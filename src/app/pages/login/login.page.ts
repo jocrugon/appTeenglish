@@ -23,12 +23,13 @@ export class LoginPage implements OnInit {
     private navCtrl:NavController,
     public loadingController: LoadingController,
     private uiService:UiServiceService,
-    private storage: Storage,
+    
 
-  ) {this.storage.create(); }
+  ) { }
 
-  ngOnInit() {
-  
+  async ngOnInit() {
+
+
   }
 
   async login(fLogin: NgForm){
