@@ -24,8 +24,7 @@ export class ExercisesComponent implements OnInit {
       .subscribe(
         (data =>{ this.listExercises = data}),
         (error=>{ 
-          this.uiService.InformativeAlert("Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuníquese con el administrador");
-          this.navCtrl.navigateRoot('login',{animated:true});
+          this.uiService.expiredToken();
         })
         );
   }
