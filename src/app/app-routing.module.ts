@@ -22,6 +22,14 @@ const routes: Routes = [
     path: 'type1/:id/:id_detail',
     loadChildren: () => import('./pages/exercises/type1/type1.module').then( m => m.Type1PageModule),
   },
+  {
+    path: 'learning',
+    loadChildren: () => import('./pages/learning/learning.module').then( m => m.LearningPageModule)
+  },
+  {
+    path: 'learning-open',
+    loadChildren: () => import('./pages/learning-open/learning-open.module').then( m => m.LearningOpenPageModule)
+  },
 
 
   

@@ -1,0 +1,26 @@
+<ion-header class="ion-no-border" [translucent]="true" >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon (click)="goHome()" name="arrow-back" size="large" class="ion-padding-start" color="primary"></ion-icon>
+    </ion-buttons>
+    <ion-title color="primary" class="ion-text-capitalize">aprendizaje</ion-title> 
+    <ion-badge slot="end" class="ion-margin" color="primary">Libre</ion-badge>
+  </ion-toolbar>
+</ion-header>
+
+<app-skeleton-text *ngIf="!listThemeLearning"></app-skeleton-text>
+<ion-content color="secondary" [fullscreen]="true" *ngIf="listThemeLearning" >
+  <ion-grid fixed >
+    <ion-row>
+      <ion-col size="6" *ngFor="let theme of listThemeLearning">
+        <ion-card (click)="openThemeLearning(theme.id)">
+          <ion-img src="{{theme.image}}"></ion-img>
+          <ion-card-header class="content-center" >
+            <ion-card-title class="ion-text-capitalize">{{theme.theme}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage-angular';
 import { DataService } from 'src/app/services/data.service';
@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
     private menu: MenuController,
     private data:DataService,
     private exercise:ExerciseService,
-
+    private navCtrl:NavController,
   ) 
   { this.storage.create(); }
 
@@ -68,6 +68,9 @@ export class MenuComponent implements OnInit {
   deactivateClassSelected(idCategorySelected:number){
     var categorySelected = document.getElementById(`${idCategorySelected}`);
     categorySelected.classList.remove("active");
+  }
+  openLearning(){
+    this.navCtrl.navigateRoot('learning',{animated:true});
   }
   
 }

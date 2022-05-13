@@ -1,0 +1,31 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title>Animals</ion-title>
+    <ion-button (click)="closeModal()" slot="end" size="small" color="primary">
+      Salir
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding " > 
+  <ion-grid fixed >
+
+    <ion-row class="content-center" *ngFor="let option of listOptionsInTheme">
+      <ion-col size="10" >
+        <ion-card class="ion-no-margin">
+          <ion-img  src="{{imgRoute+option.image}}"></ion-img>
+          <ion-item lines="none" >
+            <ion-text slot="start" class="ion-text-capitalize" id="optionCard" color="primary">{{option.option}}</ion-text>
+            <ion-chip slot="end" color="tertiary" (click)="playOption(option['option'])">
+              <ion-icon name="play" size="large" class="ion-no-margin" ></ion-icon>
+            </ion-chip>
+            <ion-chip slot="end" color="tertiary" (click)="playOptionSlow(option['option'])">
+              <ion-icon name="hourglass-sharp" size="large" class="ion-no-margin" ></ion-icon>
+            </ion-chip>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

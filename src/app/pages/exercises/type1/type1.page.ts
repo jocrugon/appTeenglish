@@ -44,8 +44,7 @@ export class Type1Page implements OnInit {
       this.listOptions = data['options'];
       }),
       (error =>{
-        this.uiService.InformativeAlert("Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuníquese con el administrador");
-        this.navCtrl.navigateRoot('login',{animated:true});
+        this.uiService.expiredToken();
       })
       );
  
@@ -97,7 +96,7 @@ export class Type1Page implements OnInit {
       }
     }
   }
-  /* button footer */
+
   goHome(){
     this.navCtrl.navigateRoot('/main',{animated:true});
   }
