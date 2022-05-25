@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'learning-open',
     loadChildren: () => import('./pages/learning-open/learning-open.module').then( m => m.LearningOpenPageModule)
   },
+  {
+    path: 'type2/:id/:id_detail',
+    loadChildren: () => import('./pages/exercises/type2/type2.module').then( m => m.Type2PageModule)
+  },
 
 
   

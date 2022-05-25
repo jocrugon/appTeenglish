@@ -84,7 +84,7 @@ export class Type1Page implements OnInit {
   checkOption(){
 
     if(this.selectedOptionValue == undefined){
-      console.log("elegir una opción p bandido");
+      console.log("elegir una opción ");
     }else{
       this.check_button_pressed = true;
       if(this.selectedOptionValue){
