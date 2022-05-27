@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import { NavController } from '@ionic/angular';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { UiServiceService } from 'src/app/services/ui-service.service';
@@ -17,6 +16,8 @@ export class Type2Page implements OnInit {
   exercise = {};
   listOptions;
   
+  buttonPressed = false;
+
   /* control del ejercicio */
   selectedOptionValue:boolean;/* para ver si se seleccionó una opción o no */
 
@@ -25,7 +26,6 @@ export class Type2Page implements OnInit {
     private exerciseService:ExerciseService,
     private navCtrl:NavController,
     private uiService:UiServiceService,
-    private tts:TextToSpeech
 
   ) { }
 
@@ -58,10 +58,15 @@ export class Type2Page implements OnInit {
     });
   }
   checkOption(){
+    this.buttonPressed=true;
     if(this.selectedOptionValue){
-      console.log("respuesta correcta");
+      //respuesta correcta
+      this.exerciseService.setSolvedInExerciseByCategoryAndStudent(this.idDetailExercise);
+      this.exerciseService.setNewValueInCurrentScore(this.exercise['score']);
     }else{
       console.log("respuesta incorrecta");
+      this.buttonPressed=false;
+
     }
   }
 
