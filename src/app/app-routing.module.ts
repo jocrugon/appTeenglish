@@ -6,7 +6,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'main',
+    redirectTo: 'instructions',
     pathMatch: 'full'
   },
   {
@@ -34,6 +34,11 @@ const routes: Routes = [
     path: 'type2/:id/:id_detail',
     loadChildren: () => import('./pages/exercises/type2/type2.module').then( m => m.Type2PageModule)
   },
+  {
+    path: 'instructions',
+    loadChildren: () => import('./pages/instructions/instructions.module').then( m => m.InstructionsPageModule)
+  },
+
 
 
   

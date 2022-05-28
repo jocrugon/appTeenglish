@@ -1,10 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
-import { Storage } from '@ionic/storage-angular';
-import { MenuComponent } from 'src/app/components/menu/menu.component';
 import { DataService } from 'src/app/services/data.service';
-import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -20,11 +17,9 @@ export class MainPage implements OnInit {
   idCategorySelected = 1;
 
   constructor(
-    private storage:Storage,
     private menu: MenuController,
     private data:DataService,
   ) { 
-    this.storage.create();
 
   }
 

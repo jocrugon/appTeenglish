@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 
 import { NgForm } from '@angular/forms';
-import { LoadingController, MenuController, NavController } from '@ionic/angular';
-import { Storage } from '@ionic/storage-angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { UiServiceService } from 'src/app/services/ui-service.service';
 
 @Component({
@@ -23,13 +22,9 @@ export class LoginPage implements OnInit {
     private navCtrl:NavController,
     public loadingController: LoadingController,
     private uiService:UiServiceService,
-    
-
   ) { }
 
   async ngOnInit() {
-
-
   }
 
   async login(fLogin: NgForm){
