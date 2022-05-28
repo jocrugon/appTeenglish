@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage-angular';
 import { DataService } from 'src/app/services/data.service';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { LoginService } from 'src/app/services/login.service';
+import { UiServiceService } from 'src/app/services/ui-service.service';
 
 @Component({
   selector: 'app-menu',
@@ -26,6 +27,7 @@ export class MenuComponent implements OnInit {
     private data:DataService,
     private exercise:ExerciseService,
     private navCtrl:NavController,
+    private uiService:UiServiceService
   ) 
   { this.storage.create(); }
 
@@ -73,4 +75,7 @@ export class MenuComponent implements OnInit {
     this.navCtrl.navigateRoot('learning',{animated:true});
   }
   
+  openAbout(){
+    this.uiService.InformativeAlert("Desarrollado con fines de estudios por estudiantes de la Universidad César Vallejo de la Carrera Ingeniería de Sistemas {José Darío Gonzalez Cruz, Franky Yerdin Jimenez Garcia}");
+  }
 }

@@ -85,6 +85,7 @@ export class Type1Page implements OnInit {
 
     if(this.selectedOptionValue == undefined){
       console.log("elegir una opción ");
+      this.uiService.InformativeAlert("Elija una opción");
     }else{
       this.check_button_pressed = true;
       if(this.selectedOptionValue){

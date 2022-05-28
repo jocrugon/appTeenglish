@@ -10,3 +10,35 @@ ion-back-button{
 #instruction{
     font-size: 20px;
 }
+
+/* footer */
+
+ion-toolbar{
+    --ion-background-color: transparent;
+    --opacity:0;
+    svg{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+#footer-message{
+    height: 15px;
+}
+.message{
+    background-color: #5D9CCF;
+    margin-top: -100px;
+    margin-bottom: -2px;
+    margin-left: 20px;
+    color: white;
+    font-size: 25px;
+    p{
+        margin: 0px;
+    }
+}
+.fondo-message{
+    margin-top: -200px;
+    margin-bottom: -2px;
+    height: 200px;
+    
+}

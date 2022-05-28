@@ -20,6 +20,8 @@ export class Type2Page implements OnInit {
 
   /* control del ejercicio */
   selectedOptionValue:boolean;/* para ver si se seleccionó una opción o no */
+  check_button_pressed:boolean = false; /* para ver si se presiona el botón de verificar */
+
 
   constructor(
     private activatedRoute:ActivatedRoute,
@@ -58,14 +60,18 @@ export class Type2Page implements OnInit {
     });
   }
   checkOption(){
-    this.buttonPressed=true;
-    if(this.selectedOptionValue){
+    
+    if(this.selectedOptionValue == undefined){
+      this.uiService.InformativeAlert("Elija una opción");
+
+    }else if(this.selectedOptionValue){
       //respuesta correcta
+      this.check_button_pressed = true;
+
       this.exerciseService.setSolvedInExerciseByCategoryAndStudent(this.idDetailExercise);
       this.exerciseService.setNewValueInCurrentScore(this.exercise['score']);
     }else{
-      console.log("respuesta incorrecta");
-      this.buttonPressed=false;
+      this.check_button_pressed = true;
 
     }
   }
@@ -74,4 +80,8 @@ export class Type2Page implements OnInit {
     this.navCtrl.navigateRoot('/main',{animated:true});
   }
   
+  remakeExercise(){
+    this.check_button_pressed = false;
+
+  }
 }
