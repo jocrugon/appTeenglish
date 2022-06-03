@@ -19,7 +19,7 @@ export class LoginService {
     private uiService:UiServiceService,
     private navCtrl:NavController,
   ) { this.storage.create(); }
-
+  /* Función que comprueba el login y obtiene datos del estudiante */
   login( username:string, password:string){
     const dataLogin = {username,password};
     return new Promise<boolean>(resolve=>{
@@ -42,10 +42,8 @@ export class LoginService {
         })
       ); 
     });
-
-
   }
-
+  /* Guarda datos del alumno que se logea en data local */
   async saveDataAccount(username:string, token:string, idAccount:number, name:string, last_name_p:string, last_name_m:string){
     const completeName = (name+' '+last_name_p+' '+last_name_m);
     await this.storage.set('username',username);
@@ -53,12 +51,14 @@ export class LoginService {
     await this.storage.set('token', token);
     this.getStudent(idAccount,token);
   }
-
+  /* muestra mensajes de error personalizados */
   showMessageSystem(status:number){
     if(status == 400){
       this.uiService.InformativeAlert('Usuario y/o Contraseña equivocada');
     }if(status == 409){
-      this.uiService.InformativeAlert('Se accedió desde otro dispositivo, si fue usted ingrese nuevamente, en caso contrario comuníquese con el administrador');
+      this.uiService.InformativeAlert('Se accedió desde otro dispositivo,'+
+                        ' si fue usted ingrese nuevamente, en caso contrario'+
+                          ' comuníquese con el administrador');
     }
   }
 

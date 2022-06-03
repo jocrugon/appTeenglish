@@ -17,7 +17,7 @@ export class LearningService {
 
   ) {this.storage.create();}
 
-  
+  /* Obtener las categorías de Aprendizaje */
   async getLearningCategories(){
     const token = await this.storage.get('token');
 
@@ -26,6 +26,7 @@ export class LearningService {
 
     return this.http.get(`${URL}/teenglish/learning/`,{headers:headers});
   }
+  /* Obtener las opciones del tema abierto */
   async getOptionsInTheme(idTheme:number){
     const token = await this.storage.get('token');
 

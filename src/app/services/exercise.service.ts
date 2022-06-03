@@ -16,7 +16,7 @@ export class ExerciseService {
     private http:HttpClient,
   ) {this.storage.create();}
 
-  
+  /* Obtiene las categorías */
   async getCategories(){
     const token = await this.storage.get('token');
     let headers = new HttpHeaders();
@@ -24,7 +24,7 @@ export class ExerciseService {
   
     return this.http.get(`${URL}/teenglish/category/`,{headers:headers});
   }
-
+  /* Obtiene los ejercicios asignados a un estudiante de acuerdo a la categoría seleccionada */
   async getExercisesByCategoryByStudent( idCategory:number){
     const token = await this.storage.get('token');
     const idStudent = await this.storage.get('idStudent');
@@ -33,7 +33,7 @@ export class ExerciseService {
   
     return this.http.get(`${URL}/teenglish/exercise/category/${idStudent}/${idCategory}`,{headers:headers});
   }
-
+  /* Obtiene un ejercicio por id */
   async getExerciseById(idExercise:number){
     const token = await this.storage.get('token');
 
