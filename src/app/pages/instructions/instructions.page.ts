@@ -11,24 +11,24 @@ export class InstructionsPage implements OnInit {
   
   slides: { img: string, titulo: string, desc: string }[] = [
     {
-      img: '/assets/slides/photos.svg',
-      titulo: 'Comparte Fotos',
-      desc: 'Mira y comparte increíbles fotos de todo el mundo'
+      img: '/assets/slides/aprende.png',
+      titulo: 'Aprende',
+      desc: 'Aprende nuevas palabras de manera dinámica'
     },
     {
-      img: '/assets/slides/music-player-2.svg',
-      titulo: 'Escucha Música',
-      desc: 'Toda tu música favorita está aquí'
+      img: '/assets/slides/cup.png',
+      titulo: 'Puntaje',
+      desc: 'Controla tu avance con puntaje obtenido por tu dedicación'
+    },
+    {
+      img: '/assets/slides/categories.png',
+      titulo: 'Categorías',
+      desc: 'Aprende temas puntuales divididos por categorías'
     },
     {
       img: '/assets/slides/calendar.svg',
-      titulo: 'Nunca olvides nada',
-      desc: 'El mejor calendario del mundo a tu disposición'
-    },
-    {
-      img: '/assets/slides/placeholder-1.svg',
-      titulo: 'Tu ubicación',
-      desc: 'Siempre sabremos donde estás!'
+      titulo: 'Decide',
+      desc: 'Aprende y resuelve ejercicios a tu ritmo'
     }
   ];
   constructor(
