@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import { NavController } from '@ionic/angular';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { UiServiceService } from 'src/app/services/ui-service.service';
@@ -28,7 +29,7 @@ export class Type2Page implements OnInit {
     private exerciseService:ExerciseService,
     private navCtrl:NavController,
     private uiService:UiServiceService,
-
+    private tts:TextToSpeech
   ) { }
 
   async ngOnInit() {
@@ -83,5 +84,14 @@ export class Type2Page implements OnInit {
   remakeExercise(){
     this.check_button_pressed = false;
 
+  }
+  playPhrase(phrase:string){
+    this.tts.speak({
+      text:phrase,
+      locale:'en-US',
+      rate:1
+    })
+    .then(()=>console.log('succes'))
+    .catch((reason:any)=>console.log(reason));
   }
 }

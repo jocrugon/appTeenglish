@@ -10,7 +10,15 @@ ion-back-button{
 #instruction{
     font-size: 20px;
 }
-
+ion-chip{
+    height: 40px;
+    ion-icon{
+        font-size: 45px;
+    }
+    ion-label{
+        font-size: 20px;
+    }
+}
 /* footer */
 
 ion-toolbar{

@@ -24,7 +24,10 @@
     </ion-row>
     <ion-row class="ion-padding-top">
       <ion-col>
-        {{exercise['phrase_translate']}}
+        <ion-chip color="tertiary" outline (click)="playPhrase(exercise['phrase_translate'])">
+          <ion-icon name="play"></ion-icon>
+          <ion-label class="ion-text-capitalize" color="success">{{exercise['phrase_translate']}}</ion-label>
+        </ion-chip>
       </ion-col>
     </ion-row>
     <ion-row>

@@ -38,7 +38,7 @@ export class ExercisesComponent implements OnInit {
       case 1:
         this.navCtrl.navigateRoot(`type1/${idExercise}/${id_detail}`);
         break;
-      case 34:
+      case 2:
         this.navCtrl.navigateRoot(`type2/${idExercise}/${id_detail}`);
       default:
         break;
