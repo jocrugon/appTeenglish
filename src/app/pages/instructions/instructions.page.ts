@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { App } from '@capacitor/app';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-instructions',
@@ -33,10 +34,18 @@ export class InstructionsPage implements OnInit {
   ];
   constructor(
     private navCtrl:NavController,
+    private storage: Storage,
 
-  ) { }
+  ) {
+    this.storage.create();
 
-  ngOnInit() {
+   }
+
+  async ngOnInit() {
+    const token = await this.storage.get('token');
+    if(token){
+      this.navCtrl.navigateRoot('main',{animated:true});
+    }
   }
   
   goLogin(){

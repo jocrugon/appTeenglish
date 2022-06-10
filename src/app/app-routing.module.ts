@@ -36,7 +36,8 @@ const routes: Routes = [
   },
   {
     path: 'instructions',
-    loadChildren: () => import('./pages/instructions/instructions.module').then( m => m.InstructionsPageModule)
+    loadChildren: () => import('./pages/instructions/instructions.module').then( m => m.InstructionsPageModule),
+  
   },
 
 
