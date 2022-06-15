@@ -19,6 +19,7 @@ export class LoginService {
     private uiService:UiServiceService,
     private navCtrl:NavController,
   ) { this.storage.create(); }
+
   /* Función que comprueba el login y obtiene datos del estudiante */
   login( username:string, password:string){
     const dataLogin = {username,password};
@@ -44,7 +45,8 @@ export class LoginService {
     });
   }
   /* Guarda datos del alumno que se logea en data local */
-  async saveDataAccount(username:string, token:string, idAccount:number, name:string, last_name_p:string, last_name_m:string){
+  async saveDataAccount(username:string, token:string, idAccount:number, 
+                name:string, last_name_p:string, last_name_m:string){
     const completeName = (name+' '+last_name_p+' '+last_name_m);
     await this.storage.set('username',username);
     await this.storage.set('completeName', completeName);

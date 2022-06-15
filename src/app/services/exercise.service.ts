@@ -33,20 +33,20 @@ export class ExerciseService {
   
     return this.http.get(`${URL}/teenglish/exercise/category/${idStudent}/${idCategory}`,{headers:headers});
   }
+
   /* Obtiene un ejercicio por id */
   async getExerciseById(idExercise:number){
     const token = await this.storage.get('token');
-
     let headers = new HttpHeaders();
     headers = headers.set('Authorization',`token ${token}`);
   
     return this.http.get(`${URL}/teenglish/exercise/${idExercise}`,{headers:headers});
   }
 
+  /* Cambia el estado del ejercicio a resuelto */
   async setSolvedInExerciseByCategoryAndStudent(id_detail:number){
 
     const token = await this.storage.get('token');
-
     let headers = new HttpHeaders();
     headers = headers.set('Authorization',`token ${token}`);
 
@@ -59,19 +59,15 @@ export class ExerciseService {
       (data => console.log(data)),
       (error => console.log(error))
     );
-
   }
-
+  /* Cambia el puntaje del alumno */
   async setNewValueInCurrentScore(scoreExercise:number){
     const token = await this.storage.get('token');
     const currentScore = await this.storage.get('current_score');
     const idStudent = await this.storage.get('idStudent');
-    
     let headers = new HttpHeaders();
     headers = headers.set('Authorization',`token ${token}`);
-
     let sumScore = currentScore + scoreExercise;
-
     this.saveCurrentScore(sumScore);
 
     const student = {
@@ -84,9 +80,8 @@ export class ExerciseService {
       (error => console.log(error))
     );
   }
-
+  /* Guarda el puntaje actual del alumno en local */
   async saveCurrentScore(current_score:number){
     await this.storage.set('current_score', current_score);
-
   }
 }

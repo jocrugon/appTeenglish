@@ -15,7 +15,7 @@
         <ion-card class="ion-no-margin">
           <ion-img  src="{{imgRoute+option.image}}"></ion-img>
           <ion-item lines="none" >
-            <ion-text slot="start" class="ion-text-capitalize" id="optionCard" color="primary">{{option.option}}</ion-text>
+            <ion-text slot="start" id="optionCard" color="primary">{{option.option}}</ion-text>
             <ion-chip slot="end" color="tertiary" (click)="playOption(option['option'])">
               <ion-icon name="play" size="large" class="ion-no-margin" ></ion-icon>
             </ion-chip>
