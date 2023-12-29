@@ -7,3 +7,4 @@ La aplicación se integra con un backend desarrollado en Python con Django para 
 Características Principales:
 Desarrollado en Ionic con Angular: Interfaz de usuario moderna, eficiente y multiplataforma
 Backend en Python con Django: Gestión de la lógica del servidor y la base de datos.
+![captura1](https://github.com/jocrugon/appTeenglish/assets/93726141/b8d289d2-5a46-4407-9d91-ac29aec92e95)
